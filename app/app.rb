@@ -1,9 +1,9 @@
 class PodcastSyncer < Padrino::Application
   register Padrino::Rendering
-  register Padrino::Mailer
-  register Padrino::Helpers
+  # register Padrino::Mailer
+  # register Padrino::Helpers
 
-  enable :sessions
+  # enable :sessions
 
   ##
   # Caching support

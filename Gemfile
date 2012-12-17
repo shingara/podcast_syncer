@@ -9,18 +9,20 @@ gem 'rake'
 gem 'sinatra-flash', :require => 'sinatra/flash'
 
 # Component requirements
-gem 'slim'
 gem 'mongoid'
 
 # Test requirements
 group :test do
-  gem 'mocha'
+  gem 'mocha', :require => false
   gem 'rspec'
   gem 'rack-test', :require => "rack/test"
+  gem 'mongoid-rspec'
 end
 
 # Padrino Stable Gem
 gem 'padrino', '0.10.7'
+
+gem 'rabl'
 
 # Or Padrino Edge
 # gem 'padrino', :git => 'git://github.com/padrino/padrino-framework.git'
