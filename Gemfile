@@ -1,17 +1,21 @@
 source 'https://rubygems.org'
 
-gem 'actionpack', '3.2.9'
+gem 'actionpack', '3.2.9', :require => false
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'rails-api'
+gem 'rails-api', :require => false
 
-gem 'podcast_syncer_model', :git => 'git://github.com/shingara/podcast_syncer_model.git'
+gem 'podcast_syncer_model', :git => 'git://github.com/shingara/podcast_syncer_model.git', :require => false
 
 
 group :development, :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', :require => false
+end
+
+group :test do
+  gem 'mocha', :require => false
 end
 
 
