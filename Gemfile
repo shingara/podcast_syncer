@@ -7,6 +7,13 @@ gem 'actionpack', '3.2.9'
 
 gem 'rails-api'
 
+gem 'podcast_syncer_model', :git => 'git://github.com/shingara/podcast_syncer_model.git'
+
+
+group :development, :test do
+  gem 'rspec-rails'
+end
+
 
 
 # To use ActiveModel has_secure_password
