@@ -1,9 +1,11 @@
 require 'spec_helper'
 
 describe AccountsController do
+
+  let(:account) { PodcastSyncerModel::Account.new }
+
   describe "Post /account" do
     context "with account create success" do
-      let(:account) { PodcastSyncerModel::Account.new }
       before do
         PodcastSyncerModel::Account.expects(:create).returns(account)
         post :create
@@ -20,5 +22,15 @@ describe AccountsController do
       end
       it { response.status.should eq 400 }
     end
+  end
+
+  describe "GET /accounts/:id" do
+    before do
+      PodcastSyncerModel::Account.expects(:find).with('12').returns(account)
+      get :show, :id => 12
+    end
+    it { response.should be_success }
+    it { assigns(:account).should eq account }
+    it { response.should render_template('accounts/show') }
   end
 end

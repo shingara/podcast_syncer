@@ -10,4 +10,9 @@ class AccountsController < ApplicationController
     end
   end
 
+  def show
+    @account = PodcastSyncerModel::Account.find(params[:id])
+    render 'accounts/show'
+  end
+
 end
