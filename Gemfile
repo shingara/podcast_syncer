@@ -14,11 +14,13 @@ gem 'rabl', :require => false
 
 group :development, :test do
   gem 'rspec-rails', :require => false
+  gem 'guard-rspec', :require => false
 end
 
 group :test do
   gem 'mocha', :require => false
   gem 'capybara', :require => false
+  gem 'rb-fsevent', :require => false
 end
 
 
