@@ -3,14 +3,14 @@ require 'capybara/rspec'
 
 describe "Accounts API" do
 
-  let(:account) { PodcastSyncerModel::Account.create(:id => 12) }
+  let(:account) { Account.create(:id => 12) }
   let(:session) { Capybara.current_session }
 
   describe "POST /accounts" do
     it 'should create an account' do
       lambda do
         session.driver.submit :post, '/accounts', {}
-      end.should change(PodcastSyncerModel::Account, :count).by(1)
+      end.should change(Account, :count).by(1)
     end
   end
 

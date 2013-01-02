@@ -1,3 +1,5 @@
+require 'podcast'
+
 module Interactions
   class PodcastCreator
     def initialize(podcast_params, account)
@@ -15,7 +17,7 @@ module Interactions
     end
 
     def podcast
-      @podcast ||= PodcastSyncerModel::Podcast.new(@params)
+      @podcast ||= Podcast.new(@params)
     end
   end
 end

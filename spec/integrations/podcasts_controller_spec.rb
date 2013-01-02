@@ -3,9 +3,9 @@ require 'capybara/rspec'
 
 describe "podcasts API" do
 
-  let(:podcast) { PodcastSyncerModel::Account.create(:url => 'http://feeds.feedburner.com/RubyRogues') }
+  let(:podcast) { Account.create(:url => 'http://feeds.feedburner.com/RubyRogues') }
 
-  let!(:account) { PodcastSyncerModel::Account.create(:id => 12) }
+  let!(:account) { Account.create(:id => 12) }
   let!(:session) { Capybara.current_session }
 
   describe "POST /accounts/:id/podcasts" do
@@ -14,7 +14,7 @@ describe "podcasts API" do
         session.driver.submit :post, "/accounts/#{account.id}/podcasts", {
           :url => 'http://feeds.feedburner.com/RubyFreelancersShow'
         }
-      end.should change(PodcastSyncerModel::Podcast, :count).by(1)
+      end.should change(Podcast, :count).by(1)
     end
   end
 

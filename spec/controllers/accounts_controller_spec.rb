@@ -2,12 +2,12 @@ require 'spec_helper'
 
 describe AccountsController do
 
-  let(:account) { PodcastSyncerModel::Account.new }
+  let(:account) { Account.new }
 
   describe "Post /account" do
     context "with account create success" do
       before do
-        PodcastSyncerModel::Account.expects(:create).returns(account)
+        Account.expects(:create).returns(account)
         post :create
       end
       it { response.status.should eq 201 }
@@ -17,7 +17,7 @@ describe AccountsController do
 
     context "with not account creation" do
       before do
-        PodcastSyncerModel::Account.expects(:create).returns(nil)
+        Account.expects(:create).returns(nil)
         post :create
       end
       it { response.status.should eq 400 }
@@ -26,7 +26,7 @@ describe AccountsController do
 
   describe "GET /accounts/:id" do
     before do
-      PodcastSyncerModel::Account.expects(:find).with('12').returns(account)
+      Account.expects(:find).with('12').returns(account)
       get :show, :id => 12
     end
     it { response.should be_success }

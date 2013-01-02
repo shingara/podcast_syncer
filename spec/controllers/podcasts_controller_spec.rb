@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe PodcastsController do
 
-  let(:account) { PodcastSyncerModel::Account.new }
-  let(:podcast) { PodcastSyncerModel::Podcast.new }
+  let(:account) { Account.new }
+  let(:podcast) { Podcast.new }
   let(:account_repository) {
     rep = Object.new
     rep.stubs(:get).with(account.id.to_s).returns(account)
@@ -52,7 +52,7 @@ describe PodcastsController do
   describe "GET /podcasts/:id" do
     context "with a podcast exist" do
       before do
-        PodcastSyncerModel::Podcast.expects(:find).with('12').returns(podcast)
+        Podcast.expects(:find).with('12').returns(podcast)
         get :show, :id => 12
       end
       it { response.should be_success }
@@ -61,7 +61,7 @@ describe PodcastsController do
     end
     context "without podcast exists" do
       before do
-        PodcastSyncerModel::Podcast.expects(:find).with('12').returns(nil)
+        Podcast.expects(:find).with('12').returns(nil)
         get :show, :id => 12
       end
       it { response.status.should eq 404 }
@@ -71,8 +71,8 @@ describe PodcastsController do
   describe "GET /account/:id/podcasts/:id" do
     context "with a podcast exist" do
       before do
-        PodcastSyncerModel::Podcast.expects(:find).with('12').returns(podcast)
-        PodcastSyncerModel::Account.expects(:find).with('1').returns(account)
+        Podcast.expects(:find).with('12').returns(podcast)
+        Account.expects(:find).with('1').returns(account)
         get :show, :id => 12, :account_id => 1
       end
       it { response.should be_success }
@@ -82,7 +82,7 @@ describe PodcastsController do
     end
     context "without podcast exists" do
       before do
-        PodcastSyncerModel::Podcast.expects(:find).with('12').returns(nil)
+        Podcast.expects(:find).with('12').returns(nil)
         get :show, :id => 12, :account_id => 1
       end
       it { response.status.should eq 404 }

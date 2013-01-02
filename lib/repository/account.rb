@@ -1,6 +1,6 @@
 class Repository::Account
   def initialize
-    @model = PodcastSyncerModel::Account
+    @model = Account
   end
 
   def get(id)

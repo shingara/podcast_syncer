@@ -1,9 +1,7 @@
-require 'podcast_syncer_model/account'
-
 class AccountsController < ApplicationController
 
   def create
-    if @account = PodcastSyncerModel::Account.create
+    if @account = Account.create
       render 'accounts/show', :status => 201
     else
       render :text => 'error', :status => 400
@@ -11,7 +9,7 @@ class AccountsController < ApplicationController
   end
 
   def show
-    @account = PodcastSyncerModel::Account.find(params[:id])
+    @account = Account.find(params[:id])
     render 'accounts/show'
   end
 

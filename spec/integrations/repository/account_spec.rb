@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'repository'
 
 describe Repository::Account do
-  let(:account) { PodcastSyncerModel::Account.create }
+  let(:account) { Account.create }
 
   let(:repository_account) {
     described_class.new

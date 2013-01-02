@@ -1,10 +1,12 @@
+require 'spec_helper'
+
 describe "podcasts/show" do
   let(:account) {
-    PodcastSyncerModel::Account.new(:id => 12)
+    Account.new(:id => 12)
   }
 
   let(:podcast) {
-    PodcastSyncerModel::Podcast.new(
+    Podcast.new(
       :url => 'http://example.org'
     )
   }

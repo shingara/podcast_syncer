@@ -1,8 +1,6 @@
-require 'podcast_syncer_model/account'
-require 'podcast_syncer_model/podcast'
-
+require 'account'
+require 'podcast'
 require 'repository'
-
 require 'interactions/podcast_creator'
 
 class PodcastsController < ApplicationController
@@ -28,11 +26,11 @@ class PodcastsController < ApplicationController
   end
 
   def account
-    if params[:account_id]
-      @account ||= Repository.new('Account').get(params[:account_id])
-    else
-      @account = nil
-    end
+    @account ||= if params[:account_id]
+                   Repository.new('Account').get(params[:account_id])
+                 else
+                   nil
+                 end
   end
 
   def podcast_params
@@ -41,7 +39,7 @@ class PodcastsController < ApplicationController
 
   def podcast
     begin
-      @podcast ||= PodcastSyncerModel::Podcast.find(params[:id])
+      @podcast ||= Podcast.find(params[:id])
     rescue Mongoid::Errors::DocumentNotFound
       @podcast = nil
     end

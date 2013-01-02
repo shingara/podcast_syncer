@@ -7,8 +7,6 @@ gem 'actionpack', '3.2.9', :require => false
 
 gem 'rails-api', :require => false
 
-gem 'podcast_syncer_model', :git => 'git://github.com/shingara/podcast_syncer_model.git', :require => false
-
 gem 'rabl', :require => false
 
 
@@ -21,6 +19,7 @@ group :test do
   gem 'mocha', :require => false
   gem 'capybara', :require => false
   gem 'rb-fsevent', :require => false
+  gem 'mongoid-rspec', :require => false
 end
 
 
